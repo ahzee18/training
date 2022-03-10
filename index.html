@@ -9,14 +9,45 @@
 <body>
 <div id="nameSurname"></div>
 <div id="for"></div>
+<div id="one"></div>
+<div id="map"></div>
 <script>
-    const user = {
-      name: 'ahmet',
-      surname: 'kocoglu'
+    const user1 = {
+        name: 'ahmet1',
+        surname: 'kocoglu'
     };
-    const users = [user];
-    document.getElementById('nameSurname').innerText = user.name + ' ' + user.surname;
-    document.getElementById('for').innerText = JSON.stringify(users);
+    const user2 = {
+        name: 'ahmet2',
+        surname: 'kocoglu'
+    };
+    const users01 = [{
+        name: 'ahmet3',
+        surname: 'kocoglu'
+    }, {
+        name: 'ahmet4',
+        surname: 'kocoglu'
+    }]
+    let users = [user1, user2];
+    users = users.concat(users01);
+    // document.getElementById('nameSurname').innerText = user.name + ' ' + user.surname;
+    // document.getElementById('for').innerText = JSON.stringify(users);
+    let html = '';
+    users.forEach(function (v, i) {
+        html += '<div id="row' + i + '">' + v.name + '</div>';
+    });
+    document.getElementById('for').innerHTML = html;
+    document.getElementById('one').innerHTML = document.getElementById('row2').innerText;
+
+    const returnMap = users.map((v, i) => {
+        return '<div id="row' + i + '">' + v.name + ' ' + v.surname + '</div>';
+    });
+
+
+    for (let i = 0; i < users.length; i++) {
+        html += '<div id="row' + i + '">' + users[i].name + ' ' + users[i].surname + '</div>';
+    }
+
+    document.getElementById('map').innerHTML = html;
 
 </script>
 </body>
